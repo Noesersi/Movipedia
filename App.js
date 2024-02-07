@@ -1,21 +1,19 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TextInput } from "react-native";
+import MovieList from "./src/services/getPopularMovies";
+import MovieSearch from "./src/services/moviSearch";
 
 export default function App() {
-  const [text, onChangeText] = React.useState("What are you looking for?");
   return (
     <View style={styles.container}>
       <Text style={styles.title}> Movipedia 🎬</Text>
-      <Text style={styles.Text}>The Movies Wikipedia</Text>
+      <Text style={styles.Text}>The Movie's Wikipedia</Text>
       <View style={styles.container2}>
-        <TextInput
-          style={styles.input}
-          value={text}
-          onChangeText={onChangeText}
-        />
+        <MovieSearch/>
         <View style={styles.topRatedMoviesContainer}>
-          <Text style={styles.Text}>⭐⭐Latest Popular Movies⭐⭐</Text>
+          <Text style={styles.Text}>⭐ Latest Popular Movies ⭐</Text>
+          <MovieList />
         </View>
       </View>
       <StatusBar hidden={true} />
@@ -35,14 +33,14 @@ const styles = StyleSheet.create({
     fontSize: 45,
   },
   container2: {
-    marginTop: 40,
-    alignItems: "center",
+    marginTop: 60,
     justifyContent: "center",
     marginHorizontal: 8,
   },
   Text: {
     color: "white",
     fontSize: 18,
+    textAlign: "center",
   },
   input: {
     backgroundColor: "white",
@@ -56,5 +54,6 @@ const styles = StyleSheet.create({
   },
   topRatedMoviesContainer:{
     marginTop: 40,
+    marginBottom: 300,
   }
 });
