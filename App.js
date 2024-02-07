@@ -12,7 +12,7 @@ export default function App() {
       <View style={styles.container2}>
         <MovieSearch/>
         <View style={styles.topRatedMoviesContainer}>
-          <Text style={styles.Text}>⭐ Latest Popular Movies ⭐</Text>
+          <Text style={styles.Text}>🚀 Latest Popular Movies</Text>
           <PopularMovieList />
         </View>
       </View>

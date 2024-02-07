@@ -11,7 +11,7 @@ import {
   Image,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
-import { styles } from './styles'
+import { styles } from "./styles";
 import { GetMovieSearch } from "../../services/getMovieSearch";
 
 const MovieSearch = () => {
@@ -29,6 +29,9 @@ const MovieSearch = () => {
           }}
         ></Image>
         <Text style={styles.movieTitle}>{item.title}</Text>
+        <View>
+          <Text style={styles.rating}>⭐{item.vote_average.toFixed(1)}</Text>
+        </View>
       </View>
     </TouchableOpacity>
   );
@@ -45,7 +48,12 @@ const MovieSearch = () => {
             value={searchText}
             onChangeText={(text) => setSearchText(text)}
           />
-          <Button title="Search" onPress={handleSearch} />
+          <TouchableOpacity
+          activeOpacity={0.5}  
+          style={styles.searchButton} 
+          >
+          <Text style={styles.buttonText} onPress={handleSearch}>Search</Text>
+          </TouchableOpacity>
         </View>
         <View>
           <Modal
@@ -75,7 +83,5 @@ const MovieSearch = () => {
     </>
   );
 };
-
-
 
 export default MovieSearch;

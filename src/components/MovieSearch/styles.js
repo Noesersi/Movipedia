@@ -12,14 +12,17 @@ export const styles = StyleSheet.create({
     width: 250,
     borderWidth: 2,
     borderColor: "white",
+    borderRadius: 10,
     padding: 10,
     marginRight: 10,
   },
   movieTitle: {
     color: "white",
+    margin: 10,
     fontSize: 16,
     fontWeight: "bold",
     marginLeft: 10,
+    flex:1,
   },
   modalContainer: {
     backgroundColor: "black",
@@ -31,9 +34,10 @@ export const styles = StyleSheet.create({
     padding: 20,
   },
   movieImage: {
-    height: 80,
-    width: 50,
+    height: 100,
+    width: 70,
     resizeMode: "cover",
+    marginLeft:20,
   },
   searchs: {
     backgroundColor: "transparent",
@@ -41,13 +45,29 @@ export const styles = StyleSheet.create({
     borderColor: "white",
     flex: 1,
     margin: 5,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: "space-around",
+    flexDirection: "row"
+    
   },
   closeButton: {
     position: "absolute",
-    top: 10,
-    right: 10,
+    top: 6,
+    right: 5,
     zIndex: 1,
   },
+  rating: {
+    color: "white",
+    fontWeight: "bold",
+    margin:10,
+  },
+  searchButton:{
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderRadius: 10,
+    backgroundColor: "hsla(120, 100%, 50%, 0.5)"
+  },
+  buttonText: {
+    color:"white",
+    fontWeight: "bold",
+  }
 });

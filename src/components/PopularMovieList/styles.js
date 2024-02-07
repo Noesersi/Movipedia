@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
       height: 140,
       resizeMode: "cover"
     },
-    popularMoviesContainer: {
-      flex: 1,
+    touchableContainer: {
+        flex: 1,
       justifyContent: "space-between"
      
     },
@@ -26,6 +26,11 @@ export const styles = StyleSheet.create({
       borderColor: "grey",
       shadowColor: "white",
       margin:2,
-    }
+    },
+    rating: {
+        color: "white",
+        fontWeight: "bold",
+        margin: 2,
+      }
   });
   

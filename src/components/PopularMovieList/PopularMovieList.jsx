@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, StyleSheet, Image } from "react-native";
-import { styles } from "./styles"
+import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
+import { styles } from "./styles";
 import { getPopularMovies } from "../../services/getPopularMovies";
 
 const PopularMovieList = () => {
   const [movies, setMovies] = useState([]);
-
 
   useEffect(() => {
     const fetchData = async () => {
@@ -15,8 +14,6 @@ const PopularMovieList = () => {
     fetchData();
   }, []);
 
-
-
   return (
     <View>
       <Text>Popular Movies</Text>
@@ -25,6 +22,7 @@ const PopularMovieList = () => {
         keyExtractor={(item) => item.id.toString()}
         numColumns={3}
         renderItem={({ item }) => (
+          <TouchableOpacity style={styles.touchableContainer}>
             <View style={styles.popularMovie}>
               <Image
                 style={styles.movieImage}
@@ -33,7 +31,11 @@ const PopularMovieList = () => {
                 }}
               ></Image>
               <Text style={styles.movieTitle}>{item.title}</Text>
+              <Text style={styles.rating}>
+                ⭐{item.vote_average.toFixed(1)}
+              </Text>
             </View>
+          </TouchableOpacity>
         )}
       />
     </View>
@@ -41,4 +43,3 @@ const PopularMovieList = () => {
 };
 
 export default PopularMovieList;
-
