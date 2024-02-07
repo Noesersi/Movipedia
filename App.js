@@ -1,8 +1,8 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View, TextInput } from "react-native";
-import MovieList from "./src/services/getPopularMovies";
-import MovieSearch from "./src/services/moviSearch";
+import PopularMovieList from "./src/components/PopularMovieList/PopularMovieList";
+import MovieSearch from "./src/components/MovieSearch/moviSearch";
 
 export default function App() {
   return (
@@ -13,7 +13,7 @@ export default function App() {
         <MovieSearch/>
         <View style={styles.topRatedMoviesContainer}>
           <Text style={styles.Text}>⭐ Latest Popular Movies ⭐</Text>
-          <MovieList />
+          <PopularMovieList />
         </View>
       </View>
       <StatusBar hidden={true} />
