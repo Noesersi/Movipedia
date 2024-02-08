@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
-import { getPopularMovies } from "../../services/getPopularMovies";
+import { getTopMovies } from "../../services/getTopMovies.js";
 import { useNavigation } from "@react-navigation/native";
 
-const PopularMovieList = () => {
+const TopRatedMovieList = () => {
   const [movies, setMovies] = useState([]);
   const navigation = useNavigation()
 
   useEffect(() => {
     const fetchData = async () => {
-      const data = await getPopularMovies();
+      const data = await getTopMovies();
       setMovies(data);
     };
     fetchData();
@@ -47,4 +47,4 @@ const PopularMovieList = () => {
   );
 };
 
-export default PopularMovieList;
+export default TopRatedMovieList;
