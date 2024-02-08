@@ -13,14 +13,20 @@ import {
 import { AntDesign } from "@expo/vector-icons";
 import { styles } from "./styles";
 import { GetMovieSearch } from "../../services/getMovieSearch";
+import { useNavigation } from "@react-navigation/native";
 
 const MovieSearch = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [modalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
+
+  const handleGotoDetails = (movieId) => { 
+    navigation.navigate('DetailView', { movieId })  
+  }
 
   const renderMovieItem = ({ item }) => (
-    <TouchableOpacity onPress={() => console.log(item.title)}>
+    <TouchableOpacity onPress={() => handleGotoDetails(item.id)}>
       <View style={styles.searchs}>
         <Image
           style={styles.movieImage}
@@ -48,11 +54,10 @@ const MovieSearch = () => {
             value={searchText}
             onChangeText={(text) => setSearchText(text)}
           />
-          <TouchableOpacity
-          activeOpacity={0.5}  
-          style={styles.searchButton} 
-          >
-          <Text style={styles.buttonText} onPress={handleSearch}>Search</Text>
+          <TouchableOpacity activeOpacity={0.5} style={styles.searchButton}>
+            <Text style={styles.buttonText} onPress={handleSearch}>
+              Search
+            </Text>
           </TouchableOpacity>
         </View>
         <View>

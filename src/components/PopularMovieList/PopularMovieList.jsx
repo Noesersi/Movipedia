@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import { View, Text, FlatList, Image, TouchableOpacity } from "react-native";
 import { styles } from "./styles";
 import { getPopularMovies } from "../../services/getPopularMovies";
+import { useNavigation } from "@react-navigation/native";
 
 const PopularMovieList = () => {
   const [movies, setMovies] = useState([]);
+  const navigation = useNavigation()
 
   useEffect(() => {
     const fetchData = async () => {
@@ -14,15 +16,18 @@ const PopularMovieList = () => {
     fetchData();
   }, []);
 
+  const handleGotoDetails = (movieId) => { 
+    navigation.navigate('DetailView', { movieId })  
+  }
+
   return (
     <View>
-      <Text>Popular Movies</Text>
       <FlatList
         data={movies}
         keyExtractor={(item) => item.id.toString()}
         numColumns={3}
         renderItem={({ item }) => (
-          <TouchableOpacity style={styles.touchableContainer}>
+          <TouchableOpacity style={styles.touchableContainer} onPress={() => handleGotoDetails(item.id)}>
             <View style={styles.popularMovie}>
               <Image
                 style={styles.movieImage}
