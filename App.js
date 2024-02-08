@@ -1,59 +1,27 @@
 import React from "react";
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View, TextInput } from "react-native";
-import MovieList from "./src/services/getPopularMovies";
-import MovieSearch from "./src/services/moviSearch";
+import Home from "./src/views/home/home";
+import DetailView from "./src/views/detailMovieView/detailMovieView";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}> Movipedia 🎬</Text>
-      <Text style={styles.Text}>The Movie's Wikipedia</Text>
-      <View style={styles.container2}>
-        <MovieSearch/>
-        <View style={styles.topRatedMoviesContainer}>
-          <Text style={styles.Text}>⭐ Latest Popular Movies ⭐</Text>
-          <MovieList />
-        </View>
-      </View>
-      <StatusBar hidden={true} />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator options={{ header: () => null }} initialRouteName="Home">
+        <Stack.Screen
+          name="Home"
+          options={{ header: () => null }}
+          component={Home}
+        />
+      <Stack.Screen
+          name="DetailView"
+          options={{ header: () => null }}
+          component={DetailView}
+        />
+
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "black",
-    alignItems: "center",
-  },
-  title: {
-    color: "white",
-    marginTop: 40,
-    fontSize: 45,
-  },
-  container2: {
-    marginTop: 60,
-    justifyContent: "center",
-    marginHorizontal: 8,
-  },
-  Text: {
-    color: "white",
-    fontSize: 18,
-    textAlign: "center",
-  },
-  input: {
-    backgroundColor: "white",
-    color: "black",
-    height: 40,
-    width: 300,
-    margin: 12,
-    borderWidth: 5,
-    borderColor: "white",
-    padding: 10,
-  },
-  topRatedMoviesContainer:{
-    marginTop: 40,
-    marginBottom: 300,
-  }
-});
